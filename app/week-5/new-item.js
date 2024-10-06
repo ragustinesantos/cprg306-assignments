@@ -87,12 +87,11 @@ export default function NewItem() {
         {/* Category */}
         <select
           onChange={handleCategoryChange}
+          value={category}
           className="ml-1 border-2 border-gray-300 p-2 rounded-lg font-sans"
         >
-          <option value={category} disabled>
-            Category
-          </option>
-          <option value="Produce" defaultValue>
+          <option disabled>Category</option>
+          <option value="Produce" selected>
             Produce
           </option>
           <option value="Dairy">Dairy</option>
