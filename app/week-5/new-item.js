@@ -43,7 +43,7 @@ export default function NewItem() {
 
     setQuantity(1);
     setName("");
-    setCategory("");
+    setCategory("Produce");
   };
 
   let buttonStyle =
