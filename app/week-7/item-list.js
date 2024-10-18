@@ -2,15 +2,16 @@
 
 import { useState } from "react";
 import Item from "./item";
-import { items } from "./items";
 
-export default function ItemList() {
+export default function ItemList({ items }) {
   const [sortBy, setSortBy] = useState("name");
 
   const btnInactive = "bg-orange-700 p-1 m-2 w-28";
   const btnActive = "bg-orange-500 p-1 m-2 w-28";
 
-  const groupedList = items.reduce((accumulator, currentItem) => {
+  let itemsToSort = [...items];
+
+  const groupedList = itemsToSort.reduce((accumulator, currentItem) => {
     if (!accumulator[currentItem.category]) {
       accumulator[currentItem.category] = [];
     }
@@ -55,9 +56,9 @@ export default function ItemList() {
   };
 
   if (sortBy == "name") {
-    items.sort(nameSort);
+    itemsToSort.sort(nameSort);
   } else if (sortBy == "category" || sortBy == "grouped") {
-    items.sort(categorySort);
+    itemsToSort.sort(categorySort);
   }
 
   const groupCat = groupedKeys.map((category) => {
@@ -83,7 +84,7 @@ export default function ItemList() {
     );
   });
 
-  const itemEntries = items.map((item) => {
+  const itemEntries = itemsToSort.map((item) => {
     return (
       <li className="p-2 m-4 bg-slate-900 max-w-sm" key={item.id}>
         <Item
