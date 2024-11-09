@@ -5,8 +5,11 @@ import { itemsData } from "./items";
 import ItemList from "./item-list";
 import NewItem from "./new-item";
 import MealIdeas from "./meal-ideas";
+import { useUserAuth } from "../_utils/auth-context";
 
 export default function Page() {
+  const { user } = useUserAuth();
+
   const [items, setItems] = useState(itemsData);
   const [selectedItemName, setSelectedItemName] = useState("");
 
@@ -31,6 +34,14 @@ export default function Page() {
     extractedName = extractedName.trim();
     setSelectedItemName(extractedName);
   };
+
+  if (!user) {
+    return (
+      <main>
+        <p>You need to be signed in to view this page</p>
+      </main>
+    );
+  }
 
   return (
     <main className="bg-slate-950">
