@@ -52,7 +52,7 @@ export default function NewItem({ onAddItem }) {
 
     setQuantity(1);
     setName("");
-    setCategory("Produce");
+    setCategory("produce");
   };
 
   let buttonStyle =

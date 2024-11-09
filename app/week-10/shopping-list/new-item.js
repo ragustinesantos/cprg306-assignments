@@ -42,7 +42,6 @@ export default function NewItem({ onAddItem }) {
     event.preventDefault();
 
     const item = {
-      id: generateRandomString(16),
       name: name,
       quantity: quantity,
       category: category,
